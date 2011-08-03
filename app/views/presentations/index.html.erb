@@ -1,0 +1,30 @@
+<div id="programacao">
+  <% @presentations.each do |presentation| %>
+    <div class="atividade">
+      <div class="cabecalho">
+        <%= presentation.kind %> - <%= presentation.title %> <span><%= presentation.time %></span>
+      </div>
+      <div class="dados">
+        <%= presentation.summary %>
+        <div class="responsavel">
+          <div class="foto">
+            <img src='not-yet' alt='<%= presentation.speaker.name %>' title='<%= presentation.title %>'/>
+          </div>
+          <div class="descricao">
+            <strong><%= presentation.speaker.name %></strong>
+            <br/>
+            <%= presentation.speaker.summary %>
+            <br/>
+            Organização: <%= presentation.speaker.organization %>
+          </div>
+          <div class="site">
+            <a href='<%= presentation.speaker.twitter_link %>'>Twitter</a>
+            <a href='<%= presentation.speaker.github_link %>'>Github</a>
+            <a href='<%= presentation.speaker.site %>'>Site</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+</div>
+
