@@ -1,14 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Pythoncampus</title>
+  <title>PythOnCampus IFF 2011</title>
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 </head>
 <body>
+  <div id="cabecalho">
+    <div id="logo">
+      <a href="/">
+        <img src="images/logo.png" alt="PythOnCampus IFF" title="PythOnCampus IFF" />
+      </a>
+    </div>
 
-<%= yield %>
+    <div id="navegacao">
+      <ul>
+        <li><%= link_to 'Início', root_path %></li>
+        <li><%= link_to 'Programação', under_construction_path %></li>
+        <li><%= link_to 'Inscrição', under_construction_path %></li>
+        <li><%= link_to 'Local', under_construction_path %></li>
+        <li><%= link_to 'Contato', under_construction_path %></li>
+        <li><%= link_to 'Equipe', under_construction_path %></li>
+      </ul>
+    </div>
+  </div>
+  <div id='conteudo'>
+    <%= yield %>
+  </div>
 
+  <div id="rodape">
+    NSI - Núcleo de Pesquisa em Sistemas de Informação - Instituto Federal Fluminense
+    <div id="links_rodape">
+      <%= link_to 'Equipe NSI', under_construction_path %> |
+      <%= link_to 'Equipe do Site', under_construction_path %>
+    </div>
+  </div>
 </body>
 </html>
+

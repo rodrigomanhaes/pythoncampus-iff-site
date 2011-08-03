@@ -1,5 +1,7 @@
 Pythoncampus::Application.routes.draw do
   match 'home' => 'home#index'
+  match 'under_construction' => 'home#under_construction'
+
   root :to => 'home#index'
 
   # The priority is based upon order of creation:
