@@ -27,6 +27,7 @@ feature 'schedule' do
       page.should have_content '08:00'
     end
     page.should have_content 'Extraia o máximo da linguagem Python usando truques sujos'
+    page.should have_content 'Local: Laboratório 10'
     within '.responsavel' do
       page.should have_content 'Rodrigo Manhães'
       page.should have_content 'Desenvolvedor de software'

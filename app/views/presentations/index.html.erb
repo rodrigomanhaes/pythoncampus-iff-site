@@ -1,3 +1,5 @@
+<h1>Programação</h1>
+
 <div id="programacao">
   <% @presentations.each do |presentation| %>
     <div class="atividade">
@@ -6,6 +8,7 @@
       </div>
       <div class="dados">
         <%= presentation.summary %>
+        Local: <strong><%= presentation.room %></strong>
         <div class="responsavel">
           <div class="foto">
             <%= image_tag presentation.speaker.photo.url, :alt => presentation.speaker.name, :title => presentation.title %>
@@ -15,7 +18,7 @@
             <br/>
             <%= presentation.speaker.summary %>
             <br/>
-            Organização: <%= presentation.speaker.organization %>
+            Organização: <strong><%= presentation.speaker.organization %></strong>
           </div>
           <div class="site">
             <a href='<%= presentation.speaker.twitter_link %>'>Twitter</a>
