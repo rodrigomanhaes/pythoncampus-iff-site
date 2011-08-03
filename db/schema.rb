@@ -10,6 +10,28 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20110803210925) do
+
+  create_table "presentations", :force => true do |t|
+    t.string   "kind"
+    t.string   "title"
+    t.string   "time"
+    t.string   "room"
+    t.integer  "speaker_id"
+    t.text     "summary"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "speakers", :force => true do |t|
+    t.string   "name"
+    t.text     "summary"
+    t.string   "organization"
+    t.string   "twitter"
+    t.string   "github"
+    t.string   "site"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
