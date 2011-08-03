@@ -8,6 +8,7 @@ gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git', :branch =>
 gem 'slim', '~>1.0.0'
 gem 'inherited_resources', '~>1.2.0'
 gem 'formtastic', '~>1.2.0'
+gem 'paperclip', '~>2.3.0'
 
 group :test do
   gem 'rspec-rails', '~>2.6.0'

@@ -8,7 +8,7 @@
         <%= presentation.summary %>
         <div class="responsavel">
           <div class="foto">
-            <img src='not-yet' alt='<%= presentation.speaker.name %>' title='<%= presentation.title %>'/>
+            <%= image_tag presentation.speaker.photo.url, :alt => presentation.speaker.name, :title => presentation.title %>
           </div>
           <div class="descricao">
             <strong><%= presentation.speaker.name %></strong>

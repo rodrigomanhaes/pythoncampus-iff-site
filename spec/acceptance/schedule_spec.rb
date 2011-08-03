@@ -10,7 +10,8 @@ feature 'schedule' do
       :organization => 'NSI',
       :twitter => 'rodrigomanhaes',
       :github => 'rodrigomanhaes',
-      :site => 'http://programacaoradical.blogspot.com')
+      :site => 'http://programacaoradical.blogspot.com',
+      :photo => File.open(File.join(RESOURCES_FOLDER, 'trollface.png')))
     presentation = Presentation.create!(
       :kind => 'Minicurso',
       :title => 'Coisas que até Guido duvida',
@@ -33,6 +34,7 @@ feature 'schedule' do
       page.should have_link_to 'https://github.com/rodrigomanhaes'
       page.should have_link_to 'http://twitter.com/rodrigomanhaes'
       page.should have_link_to 'http://programacaoradical.blogspot.com'
+      page.should have_image 'trollface.png'
     end
   end
 end

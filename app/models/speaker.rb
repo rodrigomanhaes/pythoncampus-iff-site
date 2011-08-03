@@ -1,4 +1,6 @@
 class Speaker < ActiveRecord::Base
+  has_attached_file :photo
+
   def twitter_link
     return nil if twitter.blank?
     twitter =~ /^\@?(.+)$/
