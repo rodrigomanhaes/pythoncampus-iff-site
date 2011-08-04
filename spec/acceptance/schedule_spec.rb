@@ -40,9 +40,9 @@ feature 'schedule' do
   end
 
   scenario 'links for speaker are shown only if they exist' do
-    speaker = Speaker.create!(:name => 'Someone', :twitter => 'someone',
-                              :github => 'something', :site => 'http://someone.com')
-    presentation = Presentation.create!(:title => 'Something', :speaker => speaker)
+    speaker = Speaker.create!(:twitter => 'someone', :github => 'something',
+                              :site => 'http://someone.com')
+    presentation = Presentation.create!(:speaker => speaker)
 
     visit programacao_path
     page.should have_css 'img[alt="Twitter"]'
@@ -54,6 +54,14 @@ feature 'schedule' do
     page.should_not have_css 'img[alt="Twitter"]'
     page.should_not have_css 'img[alt="Github"]'
     page.should_not have_css 'img[alt="Site/Blog"]'
+  end
+
+  scenario 'speaker photo is loaded from Gravatar if not provided' do
+    speaker = Speaker.create!(:email => 'sinistro@nsi.org')
+    presentation = Presentation.create!(:speaker => speaker)
+
+    visit programacao_path
+    page.should have_css 'img[src^="http://gravatar.com/avatar.php"]'
   end
 end
 

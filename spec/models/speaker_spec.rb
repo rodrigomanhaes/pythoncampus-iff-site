@@ -1,4 +1,5 @@
 require 'spec_helper'
+require 'digest'
 
 describe Speaker do
   it 'generates twitter link' do
@@ -24,6 +25,27 @@ describe Speaker do
     blank_users.each do |user|
       speaker.github = user
       speaker.github_link.should be_nil
+    end
+  end
+
+  describe 'generates photo link' do
+    context 'photo exists' do
+      it 'gets from paperclip' do
+        speaker = Speaker.new
+        speaker.stub(:photo).and_return(stub(:exists? => true, :url => 'photo.png'))
+        speaker.photo_link.should == 'photo.png'
+      end
+    end
+
+    context "photo doesn't exist" do
+      it 'retrieves from gravatar' do
+        speaker = Speaker.new(:email => 'speaker@pythoncampus.org', :photo => nil)
+        Digest::MD5.stub(:hexdigest).with('speaker@pythoncampus.org').and_return('12345')
+        speaker.photo_link.should == 'http://gravatar.com/avatar.php?gravatar_id=12345'
+
+        speaker.email = nil
+        speaker.photo_link.should be_nil
+      end
     end
   end
 end
