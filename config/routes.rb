@@ -3,6 +3,7 @@ Pythoncampus::Application.routes.draw do
 
   match 'home' => 'home#index'
   match 'under_construction' => 'home#under_construction'
+  match 'local' => 'home#map'
 
   resources :presentations, :only => :index
   match 'programacao' => 'presentations#index'

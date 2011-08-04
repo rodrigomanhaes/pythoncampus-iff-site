@@ -4,5 +4,8 @@ class HomeController < ApplicationController
 
   def under_construction
   end
+
+  def map
+  end
 end
 
