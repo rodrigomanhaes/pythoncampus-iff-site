@@ -1,4 +1,6 @@
 Pythoncampus::Application.routes.draw do
+  devise_for :users
+
   match 'home' => 'home#index'
   match 'under_construction' => 'home#under_construction'
 
