@@ -5,6 +5,7 @@
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults, 'jquery' %>
   <%= yield :additional_scripts %>
+  <%= yield :additional_styles %>
   <%= csrf_meta_tag %>
 </head>
 <body>
@@ -22,7 +23,7 @@
         <li><%= link_to 'Inscrição', under_construction_path %></li>
         <li><%= link_to 'Local', local_path %></li>
         <li><%= link_to 'Contato', under_construction_path %></li>
-        <li><%= link_to 'Equipe', under_construction_path %></li>
+        <li><%= link_to 'Equipe', equipe_path %></li>
       </ul>
     </div>
   </div>
@@ -33,7 +34,7 @@
   <div id="rodape">
     NSI - Núcleo de Pesquisa em Sistemas de Informação - Instituto Federal Fluminense
     <div id="links_rodape">
-      <%= link_to 'Equipe NSI', under_construction_path %> |
+      <%= link_to 'Equipe NSI', equipe_path %> |
       <%= link_to 'Equipe do Site', under_construction_path %>
     </div>
   </div>
