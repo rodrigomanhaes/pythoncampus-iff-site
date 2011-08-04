@@ -4,6 +4,10 @@ body {
     font-family: Arial,Helvetica,Sans-serif;
 }
 
+h1 {
+  font-size: 1.8em;
+}
+
 /* Cabeçalho */
 #cabecalho {
     height: 74px;
