@@ -38,5 +38,22 @@ feature 'schedule' do
       page.should have_image 'trollface.png'
     end
   end
+
+  scenario 'links for speaker are shown only if they exist' do
+    speaker = Speaker.create!(:name => 'Someone', :twitter => 'someone',
+                              :github => 'something', :site => 'http://someone.com')
+    presentation = Presentation.create!(:title => 'Something', :speaker => speaker)
+
+    visit programacao_path
+    page.should have_css 'img[alt="Twitter"]'
+    page.should have_css 'img[alt="Github"]'
+    page.should have_css 'img[alt="Site/Blog"]'
+
+    speaker.update_attributes!(:twitter => nil, :github => nil, :site => nil)
+    visit programacao_path
+    page.should_not have_css 'img[alt="Twitter"]'
+    page.should_not have_css 'img[alt="Github"]'
+    page.should_not have_css 'img[alt="Site/Blog"]'
+  end
 end
 

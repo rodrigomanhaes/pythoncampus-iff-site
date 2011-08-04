@@ -20,15 +20,21 @@
             Organização: <strong><%= presentation.speaker.organization %></strong>
           </div>
           <div class="site">
-            <a href='<%= presentation.speaker.twitter_link %>'>
-              <%= image_tag 'twitter.png', :alt => 'Twitter', :title => 'Twitter' %>
-            </a>
-            <a href='<%= presentation.speaker.github_link %>'>
-              <%= image_tag 'github.png', :alt => 'github', :title => 'github' %>
-            </a>
-            <a href='<%= presentation.speaker.site %>'>
-              <%= image_tag 'site.png', :alt => 'Site/Blog', :title => 'Site/Blog' %>
-            </a>
+            <% if presentation.speaker.twitter_link.present? %>
+              <a href='<%= presentation.speaker.twitter_link %>'>
+                <%= image_tag 'twitter.png', :alt => 'Twitter', :title => 'Twitter' %>
+              </a>
+            <% end %>
+            <% if presentation.speaker.github_link.present? %>
+              <a href='<%= presentation.speaker.github_link %>'>
+                <%= image_tag 'github.png', :alt => 'Github', :title => 'github' %>
+              </a>
+            <% end %>
+            <% if presentation.speaker.site.present? %>
+              <a href='<%= presentation.speaker.site %>'>
+                <%= image_tag 'site.png', :alt => 'Site/Blog', :title => 'Site/Blog' %>
+              </a>
+            <% end %>
           </div>
         </div>
       </div>
