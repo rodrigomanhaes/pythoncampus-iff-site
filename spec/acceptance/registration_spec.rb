@@ -14,11 +14,12 @@ feature 'registration' do
     visit inscricao_path
 
     fill_in 'Nome', :with => 'Pythonista da Silva'
+    fill_in 'E-mail', :with => 'silva@pythoncampus.org'
     check @pip.description
     check @pypy.description
     click_button 'Inscrever'
 
-    page.should have_content 'Pythonista da Silva'
+    page.should have_content 'Pythonista da Silva (silva@pythoncampus.org)'
     page.should have_content "você acaba de realizar sua pré-inscrição " +
                              "nos minicursos #{@pip.title} e #{@pypy.title}"
     page.should have_content "Seu código de inscrição é #{Attendee.first.id}"
