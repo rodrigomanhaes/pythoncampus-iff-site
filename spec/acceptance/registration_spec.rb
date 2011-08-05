@@ -23,5 +23,14 @@ feature 'registration' do
                              "nos minicursos #{@pip.title} e #{@pypy.title}"
     page.should have_content "Seu código de inscrição é #{Attendee.first.id}"
   end
+
+  scenario 'registration shows only short courses, not talks' do
+    visit inscricao_path
+
+    page.should have_content @pypy.title
+    page.should have_content @meta.title
+    page.should have_content @pip.title
+    page.should_not have_content @wsgi.title
+  end
 end
 

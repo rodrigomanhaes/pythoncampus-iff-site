@@ -6,5 +6,9 @@ class Presentation < ActiveRecord::Base
   def short_course?
     kind.try(:capitalize) == "Minicurso"
   end
+
+  def self.short_courses
+    all.select(&:short_course?)
+  end
 end
 
