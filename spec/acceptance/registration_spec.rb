@@ -14,8 +14,8 @@ feature 'registration' do
     visit inscricao_path
 
     fill_in 'Nome', :with => 'Pythonista da Silva'
-    check @pip.title
-    check @pypy.title
+    check @pip.description
+    check @pypy.description
     click_button 'Inscrever'
 
     page.should have_content 'Pythonista da Silva'
@@ -27,9 +27,9 @@ feature 'registration' do
   scenario 'registration shows only short courses, not talks' do
     visit inscricao_path
 
-    page.should have_content @pypy.title
-    page.should have_content @meta.title
-    page.should have_content @pip.title
+    page.should have_content @pypy.description
+    page.should have_content @meta.description
+    page.should have_content @pip.description
     page.should_not have_content @wsgi.title
   end
 end

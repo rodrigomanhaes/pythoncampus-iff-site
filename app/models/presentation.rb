@@ -10,5 +10,9 @@ class Presentation < ActiveRecord::Base
   def self.short_courses
     all.select(&:short_course?)
   end
+
+  def description
+    "#{title} - #{speaker.name}"
+  end
 end
 
