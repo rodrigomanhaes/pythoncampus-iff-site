@@ -1,0 +1,10 @@
+form.formtastic li {
+  list-style-type: none;
+  margin-bottom: 15px;
+}
+
+form.formtastic .inline-errors {
+  color: red;
+  display: inline;
+}
+

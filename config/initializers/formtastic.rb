@@ -31,7 +31,7 @@ Formtastic::SemanticFormBuilder.default_text_field_size = 50
 # '<abbr title="required">*</abbr>'. In other words, if you configure formtastic.required
 # in your locale, it will replace the abbr title properly. But if you don't want to use
 # abbr tag, you can simply give a string as below
-# Formtastic::SemanticFormBuilder.required_string = "(required)"
+Formtastic::SemanticFormBuilder.required_string = "<abbr title='obrigatório'>*</abbr>"
 
 # Set the string that will be appended to the labels/fieldsets which are optional
 # Defaults to an empty string ("") and also accepts procs (see required_string above)
