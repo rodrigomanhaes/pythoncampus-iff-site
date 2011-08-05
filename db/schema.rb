@@ -10,7 +10,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20110804071835) do
+ActiveRecord::Schema.define(:version => 20110804231542) do
+
+  create_table "attendees", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "presentations", :force => true do |t|
     t.string   "kind"
@@ -35,6 +41,13 @@ ActiveRecord::Schema.define(:version => 20110804071835) do
   end
 
   add_index "rails_admin_histories", ["item", "table", "month", "year"], :name => "index_rails_admin_histories"
+
+  create_table "registrations", :force => true do |t|
+    t.integer  "attendee_id"
+    t.integer  "presentation_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "speakers", :force => true do |t|
     t.string   "name"

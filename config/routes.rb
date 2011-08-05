@@ -9,6 +9,9 @@ Pythoncampus::Application.routes.draw do
   resources :presentations, :only => :index
   match 'programacao' => 'presentations#index'
 
+  resources :attendees, :only => [:new, :create, :show]
+  match 'inscricao' => 'attendees#new'
+
   root :to => 'home#index'
 
   # The priority is based upon order of creation:
