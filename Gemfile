@@ -12,7 +12,7 @@ gem 'paperclip', '~>2.3.0'
 gem 'nokogiri', '~>1.5.0'
 gem 'escape_utils', '~>0.2.0'
 
-group :test do
+group :development, :test do
   gem 'rspec-rails', '~>2.6.0'
   gem 'capybara', '~>1.0.0'
   gem 'factory_girl_rails', '~>1.1.0'
