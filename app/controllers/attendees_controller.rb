@@ -1,7 +1,8 @@
 class AttendeesController < InheritedResources:: Base
   def create
-    create! do |format|
-      format.html { render :template => 'attendees/show' }
+    create! do |success, failure|
+      success.html { render :template => 'attendees/show' }
+      failure.html { render :action => 'new' }
     end
   end
 end
