@@ -9,7 +9,7 @@ Pythoncampus::Application.routes.draw do
   resources :presentations, :only => :index
   match 'programacao' => 'presentations#index'
 
-  resources :attendees, :only => [:new, :create, :show]
+  resources :attendees, :only => [:new, :create]
   match 'inscricao' => 'attendees#new'
 
   root :to => 'home#index'
