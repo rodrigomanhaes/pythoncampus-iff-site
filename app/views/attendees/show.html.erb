@@ -1,14 +1,12 @@
 <h1>Pré-inscrição</h1>
 
-<p><%= @attendee.name %> (<%= @attendee.email %>), você acaba de realizar sua pré-inscrição nos minicursos
-<%= @attendee.presentations.map(&:title).sort.join(', ').sub(/(.*)\,\ /, '\1 e ') %></p>
+<p><%= @attendee.name %> (<%= @attendee.email %>), você acaba de realizar sua pré-inscrição no(s) minicurso(s)
+<em><%= @attendee.presentations.map(&:title).sort.join(', ').sub(/(.*)\,\ /, '\1 e ') %></em>.</p>
 
 <p>Seu código de inscrição é <%= @attendee.id %>.</p>
 
-<p>Não se esqueça de levar o alimento até o NSI para confirmar a sua inscrição
-no(s) minicurso(s).</p>
-
-<p>Você receberá um e-mail com maiores instruções a respeito da entrega do
+<p>Não se esqueça de levar o alimento até o NSI para confirmar a sua inscrição.
+Você receberá um e-mail com maiores instruções a respeito da entrega do
 alimento.</p>
 
 <p><strong>A organização da PythOnCampus IFF 2011 agradece o seu

@@ -21,7 +21,7 @@ feature 'registration' do
 
     page.should have_content 'Pythonista da Silva (silva@pythoncampus.org)'
     page.should have_content "você acaba de realizar sua pré-inscrição " +
-                             "nos minicursos #{@pip.title} e #{@pypy.title}"
+                             "no(s) minicurso(s) #{@pip.title} e #{@pypy.title}"
     page.should have_content "Seu código de inscrição é #{Attendee.first.id}"
   end
 
