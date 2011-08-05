@@ -1,0 +1,15 @@
+<h1>Inscrições confirmadas</h1>
+
+<% Presentation.short_courses.each do |presentation| %>
+  <fieldset id='presentation<%= presentation.id %>'>
+    <legend><%= presentation.description %></legend>
+
+    <ol class="registrations">
+      <% presentation.confirmed_registrations.sort_by {|r| r.attendee.name }.each do |registration| %>
+        <li><%= registration.attendee.name %> (<%= registration.attendee.email %>)</li>
+      <% end %>
+    </ol>
+    <p class="total">Total: <%= presentation.confirmed_registrations.count %></p>
+  </fieldset>
+<% end %>
+

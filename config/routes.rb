@@ -12,6 +12,13 @@ Pythoncampus::Application.routes.draw do
   resources :attendees, :only => [:new, :create]
   match 'inscricao' => 'attendees#new'
 
+  resources :registrations, :only => [] do
+    collection do
+      get :request_confirm
+      post :confirm
+    end
+  end
+
   root :to => 'home#index'
 
   # The priority is based upon order of creation:

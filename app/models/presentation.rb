@@ -14,5 +14,9 @@ class Presentation < ActiveRecord::Base
   def description
     "#{title} - #{speaker.name}"
   end
+
+  def confirmed_registrations
+    registrations.select(&:confirmed?)
+  end
 end
 

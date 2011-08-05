@@ -1,0 +1,9 @@
+h1 Confirmar inscrição
+
+= form_tag confirm_registrations_path, :method => :post do
+  - @registrations.each do |registration|
+    p
+      = check_box_tag 'registrations[]', registration.id, false, :id => registration.id
+      = label_tag registration.id, registration.description
+  = submit_tag 'Confirmar'
+

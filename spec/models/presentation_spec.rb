@@ -12,6 +12,15 @@ describe Presentation do
     presentation.description.should == 'Title - Name'
   end
 
+  it 'returns its confirmed registrations' do
+    presentation = Presentation.new
+    r1 = stub_model(Registration, :confirmed? => true)
+    r2 = stub_model(Registration, :confirmed? => false)
+    r3 = stub_model(Registration, :confirmed? => true)
+    presentation.registrations = [r1, r2, r3]
+    presentation.confirmed_registrations.should =~ [r1, r3]
+  end
+
   describe 'class' do
     it 'retrieves the short courses' do
       p1 = Factory.create :short_course
