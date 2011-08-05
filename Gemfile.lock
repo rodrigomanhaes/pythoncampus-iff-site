@@ -60,6 +60,7 @@ GEM
     diff-lcs (1.1.2)
     erubis (2.6.6)
       abstract (>= 1.0.0)
+    escape_utils (0.2.3)
     factory_girl (2.0.2)
     factory_girl_rails (1.1.0)
       factory_girl (~> 2.0.0)
@@ -156,6 +157,7 @@ PLATFORMS
 DEPENDENCIES
   capybara (~> 1.0.0)
   devise (~> 1.4.2)
+  escape_utils (~> 0.2.0)
   factory_girl_rails (~> 1.1.0)
   formtastic (~> 1.2.0)
   inherited_resources (~> 1.2.0)
