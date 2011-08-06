@@ -1,4 +1,6 @@
 class RegistrationsController < ApplicationController
+  before_filter :authenticate_user!, :only => [:request_confirm, :confirm]
+
   def request_confirm
     @registrations = Registration.unconfirmed.sort_by(&:description)
   end

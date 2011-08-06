@@ -21,3 +21,9 @@ Factory.define :registration do |r|
   r.association :presentation
 end
 
+Factory.define :user do |u|
+  u.sequence(:email) {|n| "admin#{n}@mail.com" }
+  u.password 'topsecret'
+  u.password_confirmation 'topsecret'
+end
+

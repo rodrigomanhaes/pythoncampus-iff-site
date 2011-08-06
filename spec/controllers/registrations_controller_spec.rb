@@ -1,6 +1,10 @@
 require 'spec_helper'
 
 describe RegistrationsController do
+  include Devise::TestHelpers
+
+  before(:each) { sign_in Factory.create(:user) }
+
   describe 'GET request_confirm' do
     it 'assigns all unconfirmed registrations to @registrations' do
       Registration.stub(:unconfirmed).and_return([reg_stub = Factory.build(:registration)])

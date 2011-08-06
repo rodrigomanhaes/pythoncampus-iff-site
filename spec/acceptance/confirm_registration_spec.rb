@@ -4,6 +4,8 @@ require 'spec_helper'
 
 feature 'confirm registration' do
   before :each do
+    login
+
     create_short_course presentation: 'Hacking CPython', attendee: 'Guido da Silva'
     create_short_course presentation: 'Refactoring CPython', attendee: 'Guido da Silva'
     create_short_course presentation: 'Hacking Pip', attendee: 'Ian da Silva'
