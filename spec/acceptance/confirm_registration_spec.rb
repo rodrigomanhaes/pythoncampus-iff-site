@@ -20,5 +20,15 @@ feature 'confirm registration' do
     within_fieldset("Hacking CPython") { page.should have_content 'Guido da Silva' }
     within_fieldset("Hacking Pip") { page.should have_content 'Ian da Silva' }
   end
+
+  scenario 'last confirmed registrations are marked' do
+    confirmed = 3.times.map { Factory.create(:confirmed_registration) }
+    registration = Factory.create :registration
+    visit request_confirm_registrations_path
+    check registration.description
+    click_button 'Confirmar'
+    all('.confirmed_now').should have(1).result
+    within('.confirmed_now') { page.should have_content registration.attendee.name }
+  end
 end
 

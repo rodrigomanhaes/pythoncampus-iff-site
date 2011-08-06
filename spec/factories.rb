@@ -18,7 +18,11 @@ end
 
 Factory.define :registration do |r|
   r.association :attendee
-  r.association :presentation
+  r.association :presentation, :factory => :short_course
+end
+
+Factory.define :confirmed_registration, :parent => :registration do |c|
+  c.confirmed_at { Time.now }
 end
 
 Factory.define :user do |u|
