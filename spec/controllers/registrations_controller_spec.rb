@@ -6,8 +6,8 @@ describe RegistrationsController do
   before(:each) { sign_in Factory.create(:user) }
 
   describe 'GET request_confirm' do
-    it 'assigns all unconfirmed registrations to @registrations' do
-      Registration.stub(:unconfirmed).and_return([reg_stub = Factory.build(:registration)])
+    it 'assigns all registrations that are available for confirmation to @registrations' do
+      Registration.stub(:available_for_confirmation).and_return([reg_stub = Factory.build(:registration)])
       get :request_confirm
       assigns[:registrations].should == [reg_stub]
     end

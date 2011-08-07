@@ -31,3 +31,12 @@ Factory.define :user do |u|
   u.password_confirmation 'topsecret'
 end
 
+Factory.define :crowded_short_course, :parent => :short_course do |c|
+  c.after_create do |p|
+    Presentation::MAXIMUM_CAPACITY.times do
+      p.registrations << Factory.create(:confirmed_registration, :presentation => p)
+      p.save!
+    end
+  end
+end
+

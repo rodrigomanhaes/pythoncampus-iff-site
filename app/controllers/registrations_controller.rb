@@ -7,7 +7,7 @@ class RegistrationsController < ApplicationController
   end
 
   def request_confirm
-    @registrations = Registration.unconfirmed.sort_by(&:description)
+    @registrations = Registration.available_for_confirmation.sort_by(&:description)
   end
 
   def confirm

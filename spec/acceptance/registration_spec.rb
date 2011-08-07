@@ -34,6 +34,14 @@ feature 'registration' do
     page.should_not have_content @wsgi.title
   end
 
+  scenario 'crowded short courses are not shown' do
+    20.times { Factory.create :confirmed_registration, :presentation => @pypy }
+    visit inscricao_path
+    page.should_not have_content @pypy.description
+    page.should have_content @meta.description
+    page.should have_content @pip.description
+  end
+
   context 'validations' do
     before(:each) { visit inscricao_path }
 

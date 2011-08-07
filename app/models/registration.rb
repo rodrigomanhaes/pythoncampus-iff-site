@@ -19,8 +19,8 @@ class Registration < ActiveRecord::Base
     save!
   end
 
-  def self.unconfirmed
-    all.reject(&:confirmed?)
+  def self.available_for_confirmation
+    all.reject(&:confirmed?).reject {|r| r.presentation.crowded? }
   end
 end
 

@@ -23,13 +23,26 @@ describe Registration do
     registration.confirmed_at.should == now
   end
 
-  describe 'class responsibilities' do
-    it 'retrieves all unconfirmed registrations' do
-      r1 = Registration.create!
-      r2 = Registration.create!(:confirmed_at => Time.now)
-      r3 = Registration.create!
+  context 'class responsibilities' do
+    describe 'retrieves registrations available for confirmation' do
+      before :each do
+        @crowded_presentation = Factory.create :crowded_short_course
+        @presentation = Factory.create :short_course
+      end
 
-      Registration.unconfirmed.should == [r1, r3]
+      it 'unconfirmed' do
+        r1 = Factory.create :registration, :presentation => @presentation
+        r2 = Factory.create :registration, :presentation => @presentation, :confirmed_at => Time.now
+        r3 = Factory.create :registration, :presentation => @presentation
+        Registration.available_for_confirmation.should =~ [r1, r3]
+      end
+
+      it 'not associated to crowded presentations' do
+        r1 = Factory.create :registration, :presentation => @crowded_presentation
+        r2 = Factory.create :registration, :presentation => @presentation
+        r3 = Factory.create :registration, :presentation => @presentation, :confirmed_at => Time.now
+        Registration.available_for_confirmation.should == [r2]
+      end
     end
   end
 end

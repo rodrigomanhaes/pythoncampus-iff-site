@@ -21,13 +21,26 @@ describe Presentation do
     presentation.confirmed_registrations.should =~ [r1, r3]
   end
 
-  describe 'class' do
+  it 'informs if it is crowded' do
+    Factory.create(:crowded_short_course).should be_crowded
+    Factory.create(:short_course).should_not be_crowded
+  end
+
+  describe 'class responsibilities' do
     it 'retrieves the short courses' do
       p1 = Factory.create :short_course
       p2 = Factory.create :short_course
       p3 = Factory.create :presentation
 
       Presentation.short_courses.should =~ [p1, p2]
+    end
+
+    it 'retrieves all available (not crowded) short courses' do
+      p1 = Factory.create :crowded_short_course
+      p2 = Factory.create :short_course
+      p3 = Factory.create :presentation
+
+      Presentation.available_short_courses.should == [p2]
     end
   end
 end
