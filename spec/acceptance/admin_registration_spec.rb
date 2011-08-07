@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-feature 'confirm registration' do
+feature 'admin registration' do
   before :each do
     login
 
@@ -11,7 +11,7 @@ feature 'confirm registration' do
     create_short_course presentation: 'Hacking Pip', attendee: 'Ian da Silva'
   end
 
-  scenario 'happy path' do
+  scenario 'confirm registration' do
     visit request_confirm_registrations_path
     check 'Guido da Silva - Hacking CPython'
     check 'Ian da Silva - Hacking Pip'
