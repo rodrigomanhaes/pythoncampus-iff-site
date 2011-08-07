@@ -12,7 +12,7 @@ Pythoncampus::Application.routes.draw do
   resources :attendees, :only => [:new, :create]
   match 'inscricao' => 'attendees#new'
 
-  resources :registrations, :only => [] do
+  resources :registrations, :only => [:index, :show, :destroy] do
     collection do
       get :request_confirm
       post :confirm

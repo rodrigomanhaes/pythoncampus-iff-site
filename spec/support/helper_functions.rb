@@ -12,3 +12,7 @@ def login(user = nil)
   click_button 'Sign in'
 end
 
+def current_page
+  URI.parse(current_url).path
+end
+

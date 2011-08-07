@@ -30,6 +30,28 @@ describe RegistrationsController do
       post :confirm, :registrations => [1, 2]
       assigns[:new_registrations].should =~ [@r1, @r2]
     end
+
+    it 'renders index' do
+      post :confirm, :registrations => []
+      response.should render_template 'registrations/index'
+    end
+  end
+
+  describe 'DELETE destroy' do
+    before :each do
+      Registration.stub(:find).with(1).and_return(@reg_stub = stub_model(Registration))
+    end
+
+    it 'deletes given registration' do
+      @reg_stub.should_receive(:delete)
+      delete :destroy, :id => 1
+    end
+
+    it 'redirects to :index' do
+      @reg_stub.stub(:delete)
+      delete :destroy, :id => 1
+      response.should redirect_to registrations_path
+    end
   end
 end
 

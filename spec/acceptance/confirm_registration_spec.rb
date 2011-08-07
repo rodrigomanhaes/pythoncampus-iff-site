@@ -30,5 +30,15 @@ feature 'confirm registration' do
     all('.confirmed_now').should have(1).result
     within('.confirmed_now') { page.should have_content registration.attendee.name }
   end
+
+  scenario 'delete registration' do
+    Registration.delete_all
+    Factory.create :confirmed_registration
+    Registration.count.should == 1
+    visit registrations_path
+    click_link 'Excluir'
+    current_page.should == registrations_path
+    Registration.count.should == 0
+  end
 end
 
