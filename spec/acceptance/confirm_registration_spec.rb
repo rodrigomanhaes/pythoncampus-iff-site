@@ -38,6 +38,7 @@ feature 'confirm registration' do
     visit registrations_path
     click_link 'Excluir'
     current_page.should == registrations_path
+    within('#notice') { page.should have_content 'com sucesso' }
     Registration.count.should == 0
   end
 end
