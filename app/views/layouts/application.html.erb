@@ -26,6 +26,7 @@
         <li><%= link_to 'Equipe', equipe_path %></li>
         <% if user_signed_in? %>
           <li><%= link_to '-Confirmar-', request_confirm_registrations_path %></li>
+          <li><%= link_to '-Ver-', registrations_path %></li>
         <% end %>
         <li>
       </ul>
