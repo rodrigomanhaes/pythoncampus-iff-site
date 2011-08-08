@@ -15,31 +15,33 @@ feature 'registration' do
 
     fill_in 'Nome', :with => 'Pythonista da Silva'
     fill_in 'E-mail', :with => 'silva@pythoncampus.org'
-    check @pip.description
-    check @pypy.description
+    select @pip.description, :on => 'Minicurso'
     click_button 'Inscrever'
 
     page.should have_content 'Pythonista da Silva (silva@pythoncampus.org)'
     page.should have_content "você acaba de realizar sua pré-inscrição " +
-                             "no(s) minicurso(s) #{@pip.title} e #{@pypy.title}"
+                             "no minicurso #{@pip.title}"
     page.should have_content "Seu código de inscrição é #{Attendee.first.id}"
   end
 
   scenario 'registration shows only short courses, not talks' do
     visit inscricao_path
-
-    page.should have_content @pypy.description
-    page.should have_content @meta.description
-    page.should have_content @pip.description
-    page.should_not have_content @wsgi.title
+    id = field_labeled("Minicurso")[:id]
+    [@pypy, @meta, @pip].map(&:description).each do |description|
+      page.should have_xpath "//select[@id='%s']/option[text()='%s']" % [
+        id, description]
+    end
+    page.should_not have_xpath "//select[@id='%s']/option[text()='%s']" % [
+      id, @wsgi.title]
   end
 
   scenario 'crowded short courses are not shown' do
     20.times { Factory.create :confirmed_registration, :presentation => @pypy }
     visit inscricao_path
-    page.should_not have_content @pypy.description
-    page.should have_content @meta.description
-    page.should have_content @pip.description
+    id = field_labeled("Minicurso")[:id]
+    page.should_not have_xpath "//select[@id='%s']/option[text()='%s']" % [id, @pypy.description]
+    page.should have_xpath "//select[@id='%s']/option[text()='%s']" % [id, @meta.description]
+    page.should have_xpath "//select[@id='%s']/option[text()='%s']" % [id, @pip.description]
   end
 
   context 'validations' do

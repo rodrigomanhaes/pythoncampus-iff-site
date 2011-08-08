@@ -1,6 +1,6 @@
 <h1>Pré-inscrição</h1>
 
-<p><%= @attendee.name %> (<%= @attendee.email %>), você acaba de realizar sua pré-inscrição no(s) minicurso(s)
+<p><%= @attendee.name %> (<%= @attendee.email %>), você acaba de realizar sua pré-inscrição no minicurso
 <em><%= @attendee.presentations.map(&:title).sort.join(', ').sub(/(.*)\,\ /, '\1 e ') %></em>.</p>
 
 <p>Seu código de inscrição é <%= @attendee.id %>.</p>

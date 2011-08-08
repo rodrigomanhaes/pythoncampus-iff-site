@@ -3,6 +3,6 @@ h1 Inscrição
 = semantic_form_for @attendee do |form|
   = form.input :name, :label => 'Nome'
   = form.input :email, :label => 'E-mail'
-  = form.input :presentations, :as => :check_boxes, :label_method => :description, :collection => Presentation.available_short_courses, :label => 'Minicursos'
+  = form.input :presentations, :as => :select, :label_method => :description, :collection => Presentation.available_short_courses, :label => 'Minicursos'
   = form.submit 'Inscrever'
 
