@@ -4,6 +4,7 @@ class AttendeesController < InheritedResources:: Base
     if @attendee.save
       presentation = Presentation.find(params['short_course'])
       @attendee.registrations.create! :presentation => presentation
+      AttendeeMailer.pre_registration_email(@attendee).deliver
       render :template => 'attendees/show'
     else
       @short_course = params['short_course']

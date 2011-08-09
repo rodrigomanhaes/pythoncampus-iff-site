@@ -5,4 +5,5 @@ tmp/
 config/database.yml
 public/system
 config/.goutput*
+config/mail.yml
 
