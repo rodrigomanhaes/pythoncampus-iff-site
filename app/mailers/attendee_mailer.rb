@@ -13,5 +13,10 @@ class AttendeeMailer < ActionMailer::Base
     mail(:to => 'pythoncampus2011@gmail.com', :from => contact.email,
          :subject => contact.subject)
   end
+
+  def confirm_registration_email(registration)
+    @registration = registration
+    mail(:to => @registration.attendee.email, :subject => 'Confirmação de inscrição')
+  end
 end
 

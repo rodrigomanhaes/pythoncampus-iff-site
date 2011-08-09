@@ -12,7 +12,10 @@ class RegistrationsController < ApplicationController
 
   def confirm
     @new_registrations = params[:registrations].map {|id| Registration.find(id) }
-    @new_registrations.each {|registration| registration.confirm! }
+    @new_registrations.each do |registration|
+      registration.confirm!
+      AttendeeMailer.confirm_registration_email(registration).deliver
+    end
     render :action => :index
   end
 
