@@ -1,0 +1,9 @@
+h1 Fale com a gente
+
+= semantic_form_for @contact, :url => { :action => :send_contact }, :html => { :method => :post } do |form|
+  = form.input :name, :label => 'Nome'
+  = form.input :email, :label => 'E-mail'
+  = form.input :subject, :label => 'Assunto'
+  = form.input :message, :as => :text, :label => 'Mensagem', :input_html => { :cols => 65, :rows => 8 }
+  = form.submit 'Enviar'
+

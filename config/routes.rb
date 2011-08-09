@@ -5,6 +5,8 @@ Pythoncampus::Application.routes.draw do
   match 'under_construction' => 'home#under_construction'
   match 'local' => 'home#map'
   match 'equipe' => 'home#team'
+  match 'contato' => 'home#contact'
+  match 'send_contact' => 'home#send_contact'
 
   resources :presentations, :only => :index
   match 'programacao' => 'presentations#index'
