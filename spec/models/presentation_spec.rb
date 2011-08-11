@@ -8,8 +8,9 @@ describe Presentation do
 
   it 'returns its title and speaker name as description' do
     presentation = Presentation.new(:title => 'Title',
-                                    :speaker => stub_model(Speaker, :name => 'Name'))
-    presentation.description.should == 'Title - Name'
+                                    :speakers => [stub_model(Speaker, :name => 'Name'),
+                                                  stub_model(Speaker, :name => 'Eman')])
+    presentation.description.should == 'Title - Name, Eman'
   end
 
   it 'returns its confirmed registrations' do

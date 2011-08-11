@@ -9,34 +9,36 @@
       <div class="dados">
         <%= presentation.summary %><br/>
         Local: <strong><%= presentation.room %></strong>
-        <div class="responsavel">
-          <div class="foto">
-            <%= image_tag presentation.speaker.photo_link || "", :title => presentation.speaker.name, :alt => "" %>
+        <% presentation.speakers.each do |speaker| %>
+          <div class="responsavel">
+            <div class="foto">
+              <%= image_tag speaker.photo_link || "", :title => speaker.name, :alt => "" %>
+            </div>
+            <div class="descricao">
+              <strong><%= speaker.name %></strong>
+              <br/>
+              <%= speaker.summary %><br/>
+              Organização: <strong><%= speaker.organization %></strong>
+            </div>
+            <div class="site">
+              <% if speaker.twitter_link.present? %>
+                <a href='<%= speaker.twitter_link %>'>
+                  <%= image_tag 'twitter.png', :alt => 'Twitter', :title => 'Twitter' %>
+                </a>
+              <% end %>
+              <% if speaker.github_link.present? %>
+                <a href='<%= speaker.github_link %>'>
+                  <%= image_tag 'github.png', :alt => 'Github', :title => 'github' %>
+                </a>
+              <% end %>
+              <% if speaker.site.present? %>
+                <a href='<%= speaker.site %>'>
+                  <%= image_tag 'site.png', :alt => 'Site/Blog', :title => 'Site/Blog' %>
+                </a>
+              <% end %>
+            </div>
           </div>
-          <div class="descricao">
-            <strong><%= presentation.speaker.name %></strong>
-            <br/>
-            <%= presentation.speaker.summary %><br/>
-            Organização: <strong><%= presentation.speaker.organization %></strong>
-          </div>
-          <div class="site">
-            <% if presentation.speaker.twitter_link.present? %>
-              <a href='<%= presentation.speaker.twitter_link %>'>
-                <%= image_tag 'twitter.png', :alt => 'Twitter', :title => 'Twitter' %>
-              </a>
-            <% end %>
-            <% if presentation.speaker.github_link.present? %>
-              <a href='<%= presentation.speaker.github_link %>'>
-                <%= image_tag 'github.png', :alt => 'Github', :title => 'github' %>
-              </a>
-            <% end %>
-            <% if presentation.speaker.site.present? %>
-              <a href='<%= presentation.speaker.site %>'>
-                <%= image_tag 'site.png', :alt => 'Site/Blog', :title => 'Site/Blog' %>
-              </a>
-            <% end %>
-          </div>
-        </div>
+        <% end %>
       </div>
     </div>
   <% end %>

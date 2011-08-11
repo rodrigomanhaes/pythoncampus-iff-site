@@ -1,5 +1,5 @@
 class Presentation < ActiveRecord::Base
-  belongs_to :speaker
+  has_and_belongs_to_many :speakers
   has_many :registrations
   has_many :attendees, :through => :registrations
 
@@ -14,7 +14,7 @@ class Presentation < ActiveRecord::Base
   end
 
   def description
-    "#{title} - #{speaker.name}"
+    "#{title} - #{speakers.map(&:name).join(', ')}"
   end
 
   def confirmed_registrations

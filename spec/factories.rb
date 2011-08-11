@@ -1,6 +1,9 @@
 Factory.define :presentation do |p|
   p.title 'Aux Armes Citoyens!'
-  p.association :speaker
+  p.after_create do |p|
+    p.speakers << Factory.create(:speaker)
+    p.save!
+  end
 end
 
 Factory.define :speaker do |s|

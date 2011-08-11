@@ -4,7 +4,7 @@ require 'spec_helper'
 
 feature 'schedule' do
   scenario 'show presentations' do
-    speaker = Speaker.create!(
+    speaker1 = Speaker.create!(
       :name => 'Rodrigo Manhães',
       :summary => 'Desenvolvedor de software, vocalista de grindcore e baterista de pop rock',
       :organization => 'NSI',
@@ -12,12 +12,19 @@ feature 'schedule' do
       :github => 'rodrigomanhaes',
       :site => 'http://programacaoradical.blogspot.com',
       :photo => File.open(File.join(RESOURCES_FOLDER, 'trollface.png')))
+    speaker2 = Speaker.create!(
+      :name => 'Guido van Rossum',
+      :summary => 'Criador do Python',
+      :organization => 'Google',
+      :twitter => 'gvanrossum',
+      :site => 'http://neopythonic.blogspot.com',
+      :photo => File.open(File.join(RESOURCES_FOLDER, 'trollface.png')))
     presentation = Presentation.create!(
       :kind => 'Minicurso',
       :title => 'Coisas que até Guido duvida',
       :time => '08:00',
       :room => 'Laboratório 10',
-      :speaker => speaker,
+      :speakers => [speaker1, speaker2],
       :summary => 'Extraia o máximo da linguagem Python usando truques sujos')
 
     visit programacao_path
@@ -37,12 +44,20 @@ feature 'schedule' do
       page.should have_link_to 'http://programacaoradical.blogspot.com'
       page.should have_image 'trollface.png'
     end
+    within '.responsavel:last-of-type' do
+      page.should have_content 'Guido van Rossum'
+      page.should have_content 'Criador do Python'
+      page.should have_content 'Organização: Google'
+      page.should have_link_to 'http://twitter.com/gvanrossum'
+      page.should have_link_to 'http://neopythonic.blogspot.com'
+      page.should have_image 'trollface.png'
+    end
   end
 
   scenario 'links for speaker are shown only if they exist' do
     speaker = Speaker.create!(:twitter => 'someone', :github => 'something',
                               :site => 'http://someone.com')
-    presentation = Presentation.create!(:speaker => speaker)
+    presentation = Presentation.create!(:speakers => [speaker])
 
     visit programacao_path
     page.should have_css 'img[alt="Twitter"]'
@@ -58,7 +73,7 @@ feature 'schedule' do
 
   scenario 'speaker photo is loaded from Gravatar if not provided' do
     speaker = Speaker.create!(:email => 'sinistro@nsi.org')
-    presentation = Presentation.create!(:speaker => speaker)
+    presentation = Presentation.create!(:speakers => [speaker])
 
     visit programacao_path
     page.should have_css 'img[src^="http://gravatar.com/avatar.php"]'
