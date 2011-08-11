@@ -8,3 +8,8 @@ form.formtastic .inline-errors {
   display: inline;
 }
 
+.required abbr {
+  border: none;
+  color: red;
+}
+
