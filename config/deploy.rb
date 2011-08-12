@@ -17,13 +17,12 @@ server "200.143.198.44", :app, :web, :db, :primary => true
 
 default_run_options[:pty] = true
 
-set :repository, 'git@git.nsi.iff.edu.br:pythoncampus.git'
+set :repository, 'git://github.com/rodrigomanhaes/pythoncampus-iff-site.git'
 set :scm, 'git'
 set :branch, 'master'
 set :deploy_via, :copy
 
 set :user, 'rails'
-set :admin_runner, 'root'
 
 namespace :deploy do
   desc 'Restart Application'
