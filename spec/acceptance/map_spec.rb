@@ -2,7 +2,7 @@
 
 require 'spec_helper'
 
-feature 'map' do
+feature 'map', :javascript => true do
   before(:all) { Capybara.current_driver = :selenium }
   after(:all) { Capybara.use_default_driver }
 

@@ -3,7 +3,7 @@ rvm:
 
 env: "RAILS_ENV='test'"
 
-script: "bundle exec rspec spec"
+script: "bundle exec rspec --tag ~javascript spec/"
 
 before_script:
   - "cp config/database.yml.travis config/database.yml"
