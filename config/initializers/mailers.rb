@@ -10,7 +10,7 @@ ActionMailer::Base.smtp_settings = {
   :address        => mail['address'],
   :port           => mail['port'].to_i,
   :domain         => mail['domain'],
-  :authentication => :plain,
+  :authentication => mail['authentication'].try(:to_sym),
   :user_name      => mail['user_name'],
   :password       => mail['password']
 }
