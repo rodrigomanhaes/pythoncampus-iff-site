@@ -1,3 +1,5 @@
+.. image:: http://travis-ci.org/rodrigomanhaes/pythoncampus-iff-site.png
+
 Site da PythOnCampus IFF 2011
 =============================
 
