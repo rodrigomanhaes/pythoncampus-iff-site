@@ -1,0 +1,15 @@
+rvm:
+  - 1.9.2
+
+env: "RAILS_ENV='test'"
+
+script: "bundle exec rspec spec"
+
+notifications:
+  recipients:
+    - rmanhaes@gmail.com
+
+branches:
+  only:
+    - master
+
