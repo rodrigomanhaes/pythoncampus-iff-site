@@ -6,5 +6,7 @@ h1 Inscrição
   li
     = label_tag :short_course, 'Minicurso'
     = select_tag :short_course, options_from_collection_for_select(Presentation.available_short_courses, :id, :description, @short_course)
+  p.warning
+    | Todos os minicursos, exceto "Linux Básico", têm como pré-requisito conhecimentos básicos de Linux (terminal/editor de texto).
   = form.submit 'Inscrever'
 

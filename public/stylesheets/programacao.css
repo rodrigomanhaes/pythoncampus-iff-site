@@ -55,3 +55,6 @@
     text-align: right;
 }
 
+.dados .responsavel .site a {
+    text-decoration: none;
+}
