@@ -7,8 +7,8 @@ script: "bundle exec rspec --tag ~javascript spec/"
 
 before_script:
   - "cp config/database.yml.travis config/database.yml"
-  - "rake db:create"
-  - "rake db:schema:load"
+  - "bundle exec rake db:create"
+  - "bundle exec rake db:schema:load"
 
 notifications:
   recipients:
